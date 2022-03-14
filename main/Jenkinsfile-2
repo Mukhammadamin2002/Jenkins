@@ -1,0 +1,12 @@
+pipeline {
+    agent {
+        docker {
+            image "docker:dind"
+        }
+    }
+    stage('Cloning our Git') {
+        steps {
+            
+        }
+    }
+}
