@@ -1,0 +1,23 @@
+pipeline {
+    agent {
+        docker {
+            image "docker:dind"
+        }
+    }
+    stages {
+        stage('Build Image') {
+            steps {
+                sh """
+                    docker build -t hello_there .
+                """
+            }
+        }
+        stage('Running Image') {
+            steps {
+                sh """
+                    docker run --rm hello_there
+                """
+            }
+        }
+    }
+}
