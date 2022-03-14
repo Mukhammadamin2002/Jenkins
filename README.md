@@ -5,3 +5,7 @@
 ![jobs1](./images/job-1.jpg)
 #### Docker Agent Configured in Jenkins Server
 ![job2](./images/job2.jpg)
+
+----------
+#### Running Container after building image from Dockerfile in ./extra is available
+![extra1](./images/extra1.jpg) 
