@@ -1,23 +1,35 @@
 ---
-- hosts: target
+- hosts: main
   become: yes
-  remote_user: ec2-user
+  remote_user: ubuntu
   tasks:
   - name: Import jenkins key from url
-    shell:
-      "curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
-      /usr/share/keyrings/jenkins-keyring.asc > /dev/null"
+    get_url:
+      url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+      dest: /usr/share/keyrings/jenkins-keyring.asc 
 
   - name: Step 2
     shell:
       "echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
       https://pkg.jenkins.io/debian binary/ | sudo tee \
       /etc/apt/sources.list.d/jenkins.list > /dev/null"
-
-  - name: apt update
+  
+  - name: "Update cache & Full system update"
     apt:
-      name: '*'
-      state: latest
+      update_cache: true
+      upgrade: dist
+      cache_valid_time: 3600
+      force_apt_get: true
+
+  # - name: apt update
+  #   apt:
+  #     name: '*'
+  #     state: latest
+
+  - name: Install java
+    apt:
+      name: openjdk-11-jre-headless
+      state: present
 
   - name: Install jenkins
     apt:

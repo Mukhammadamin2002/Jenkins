@@ -9,3 +9,7 @@
 ----------
 #### Running Container after building image from Dockerfile in ./extra is available
 ![extra1](./images/extra1.jpg) 
+
+--------
+#### Ansible Configured to Install Jenkins with playbook you can find `jenkins_ansible` folder
+![extra2](./images/extra2.jpg)
