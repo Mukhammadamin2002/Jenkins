@@ -13,3 +13,6 @@
 --------
 #### Ansible Configured to Install Jenkins with playbook you can find `jenkins_ansible` folder
 ![extra2](./images/extra2.jpg)
+
+#### Webhook Added to GitHub Account, trigger webhook when push to given repository && Enable `GitHub hook trigger for GITScm polling` in New Created Jobs
+![extra3](./images/extra3.jpg)
