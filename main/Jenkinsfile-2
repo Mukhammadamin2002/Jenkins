@@ -1,12 +1,25 @@
 pipeline {
+    environment { 
+        registry = "aqua2/jenkins" 
+        dockerImage = ''
+    }
     agent {
         docker {
             image "docker:dind"
         }
     }
-    stage('Cloning our Git') {
-        steps {
-            
+    stages {
+        stage('Cloning our Git') {
+            steps {
+                git 'https://github.com/Mukhammadamin2002/Jenkins.git'
+            }
+        }
+        stage('Building Image') {
+            steps {
+                script {
+                    dockerImage = docker.build registry + ": $BUILD_NUMBER"
+                }
+            }
         }
     }
 }
